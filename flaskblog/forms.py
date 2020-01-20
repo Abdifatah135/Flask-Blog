@@ -30,6 +30,10 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember me')
     submit = SubmitField('Login')
     
+class CommentForm(FlaskForm):
+    # title = StringField('Title', validators=[DataRequired()])
+    content = TextAreaField('Content', validators=[DataRequired()])
+    submit = SubmitField('Post')
     
     
 class UpdateAccountForm(FlaskForm):
@@ -54,5 +58,8 @@ class PostForm(FlaskForm):
     content = TextAreaField('Content', validators=[DataRequired()])
     submit =SubmitField('Post')
     
-
+class CommentForm(FlaskForm):
+    # title = StringField('Title', validators=[DataRequired()])
+    content = TextAreaField('Content', validators=[DataRequired()])
+    submit = SubmitField('Post')
     
