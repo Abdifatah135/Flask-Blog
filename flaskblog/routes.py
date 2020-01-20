@@ -2,7 +2,7 @@ import os
 import secrets
 from flask import render_template, url_for, flash, redirect, request, abort
 from flaskblog import app, db, bcrypt
-from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
+from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, CommentForm
 from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -154,4 +154,15 @@ def user_posts(username):
     return render_template('user_posts.html', posts=posts, user=user)
 
 
-
+@app.route("/comment/new", methods=['GET', 'POST'])
+@login_required
+def new_comment():
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Post( content=form.content.data)
+        db.session.add(comment)
+        db.session.commit()
+        flash('Your comment has been created!', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_post.html',
+                           form=form, legend='New Comment')

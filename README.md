@@ -31,7 +31,7 @@ Abdifatah Mohamed
 * https://flaskpitch.herokuapp.com/
 
 # Installation Process
-* Navigate to my git repository https://github.com/Abdifatah135/Flask-User.git
+* Navigate to my git repository https://github.com/Abdifatah135/Flask-Blog.git
 
 * Clone the project to your computer
 
